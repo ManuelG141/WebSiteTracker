@@ -24,6 +24,6 @@ jobs:
         port: 22
         script: |
           cd /var/www/hostname8913.ddns.net/
-          git pull origin main
+          git pull origin production
           git status
           npm install --only=prod
