@@ -1,0 +1,1 @@
+Just and example file to test Git on the server
