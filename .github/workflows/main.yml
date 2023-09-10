@@ -18,9 +18,9 @@ jobs:
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{ secrets.HOST_ONE }}
+        username: ${{ secrets.USERNAME_ONE }}
+        key: ${{ secrets.SSH_PRIVATE_KEY_ONE }}
         port: 22
         script: |
           cd /var/www/hostname8913.ddns.net/
