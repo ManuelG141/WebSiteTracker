@@ -25,5 +25,3 @@ jobs:
         script: |
           cd /var/www/webSiteTracker/
           git pull origin production
-          git status
-          npm install --only=prod
