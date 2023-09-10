@@ -19,7 +19,7 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST_ONE }}
-        username: ${{ secrets.USERNAME }}
+        username: ${{ secrets.USERNAME_ONE }}
         key: ${{ secrets.SSH_PRIVATE_KEY_ONE }}
         port: 22
         script: |
