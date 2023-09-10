@@ -1,2 +1,2 @@
 Just and example file to test Git on the server
-edit 2
+edit 2 Hola
