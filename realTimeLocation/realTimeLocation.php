@@ -4,7 +4,12 @@
     <head>     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Sebastian Fernandez</title>
+        <title>
+            <?php
+            include_once "../globalVariables.php";
+            echo htmlspecialchars($title);
+            ?>
+        </title>
         <link rel="stylesheet" href="../reset.css">
         <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="style.css">
@@ -20,6 +25,7 @@
                 <h1><img src="../images/Taxi.png" alt="Taxi"></h1>
                 <nav>
                     <ul>
+                        <?php  include_once "../globalVariables.php"; echo $state; ?>
                         <li><a href="../index.php">Main page</a></li>
                         <li><a href="realTimeLocation.php" class="seleccion">Real time location</a></li>
                         <li><a href="../realTimeRoute/realTimeRoute.php" >Real time route</a></li>

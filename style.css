@@ -26,6 +26,13 @@ nav{
 
 }
 
+nav ul .develop{
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 35px;
+}
+
 nav li{
     display: inline;
     margin: 0 0 0 15px;
