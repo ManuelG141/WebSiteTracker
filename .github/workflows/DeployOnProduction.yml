@@ -9,7 +9,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  sendToManuelServer:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -21,6 +21,24 @@ jobs:
         host: ${{ secrets.HOST_ONE }}
         username: ${{ secrets.USERNAME_ONE }}
         key: ${{ secrets.SSH_PRIVATE_KEY_ONE }}
+        port: 22
+        script: |
+          cd /var/www/webSiteTracker/
+          git pull origin production
+          
+  # This workflow contains a single job called "build"
+  sendToSebatianServer:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:       
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_TWO }}
+        username: ${{ secrets.USERNAME_TWO }}
+        key: ${{ secrets.SSH_PRIVATE_KEY_TWO }}
         port: 22
         script: |
           cd /var/www/webSiteTracker/
