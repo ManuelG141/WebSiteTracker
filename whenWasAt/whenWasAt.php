@@ -18,6 +18,7 @@
                     <ul>
                         <li><a href="../index.php">Main page</a></li>
                         <li><a href="../realTimeLocation/realTimeLocation.php">Real time location</a></li>
+                        <li><a href="../realTimeRoute/realTimeRoute.php" >Real time route</a></li>
                         <li><a href="../whereWasAt/whereWasAt.php">Where was in?</a></li>
                         <li><a href="whenWasAt.php"  class="seleccion">When was in?</a></li>
                     </ul>
