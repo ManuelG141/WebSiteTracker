@@ -1,2 +1,2 @@
-#ignore all .exe files, this is a comment
-*.exe
+#ignore all files below:
+includes/dbh.inc.php
