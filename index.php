@@ -4,7 +4,12 @@
     <head>     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Sebastian Fernandez</title>
+        <title>
+            <?php
+            include_once "globalVariables.php";
+            echo htmlspecialchars($title);
+            ?>
+        </title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
@@ -16,6 +21,7 @@
                 <h1><img src="images/Taxi.png" alt="Taxi"></h1>
                 <nav>
                     <ul>
+                        <?php  include_once "globalVariables.php"; echo $state; ?>
                         <li><a href="index.php" class="seleccion">Main page</a></li>
                         <li><a href="realTimeLocation/realTimeLocation.php" >Real time location</a></li>
                         <li><a href="realTimeRoute/realTimeRoute.php" >Real time route</a></li>
