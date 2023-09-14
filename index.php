@@ -33,6 +33,8 @@
         </header>
         <main>
             <img class="banner" src="images/banner.jpg">
+            <p>Hola esto es una prueba
+            </p> 
         </main>
 
         <footer>
