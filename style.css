@@ -28,7 +28,6 @@ nav{
 
 nav ul .develop{
     text-transform: uppercase;
-    color: #FFFFFF;
     font-weight: bold;
     font-size: 35px;
 }
@@ -73,7 +72,7 @@ footer img{
 }
 
 .copyright{
-    color: #FFFFFF;
+    color: black;
     font-size: 13px;
     margin: 20px;
 }
