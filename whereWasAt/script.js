@@ -3,8 +3,8 @@ function humanToUnix(human){
     let Epoch;
     // If there's no input, just return null
     if (human!=""){
-        const newDate = new Date(human);
-        Epoch = newDate.getUTCDate()/1000.0;
+        let newDate = new Date(human);
+        Epoch = (newDate.getTime()/1000.0 - (newDate.getTimezoneOffset() * 60 * 1000));
     }else{
         Epoch = null
     }
@@ -67,8 +67,11 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
     startValue = startUnix;
     endValue = endUnix;
     // Get the actual time
-    const currentTime = Math.floor(new Date().getUTCDate()/1000.0);
+    const currentTime = humanToUnix(new Date().toUTCString());
 
+    console.log(startValue);
+    console.log(endValue);
+    console.log(currentTime);
     const {proceed, message} = isRangePossible(startValue, endValue, currentTime);
 
     if(proceed){
