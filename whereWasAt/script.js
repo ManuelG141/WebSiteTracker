@@ -4,7 +4,7 @@ function humanToUnix(human){
     // If there's no input, just return null
     if (human!=""){
         let newDate = new Date(human);
-        Epoch = (newDate.getTime()/1000.0 - (newDate.getTimezoneOffset() * 60 * 1000));
+        Epoch = (newDate.getTime() - (newDate.getTimezoneOffset() * 60 * 1000))/1000;
     }else{
         Epoch = null
     }
