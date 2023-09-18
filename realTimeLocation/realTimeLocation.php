@@ -22,19 +22,27 @@
     </head>
    <body>
         <header>
-            <div class="caja">
-                <h1><img src="../images/Taxi.png" alt="Taxi"></h1>
-                <nav>
-                    <ul>
-                        <?php  include_once "../globalVariables.php"; echo $state; ?>
-                        <li><a href="../index.php">Main page</a></li>
-                        <li><a href="realTimeLocation.php" class="seleccion">Real time location</a></li>
-                        <li><a href="../realTimeRoute/realTimeRoute.php" >Real time route</a></li>
-                        <li><a href="../whereWasAt/whereWasAt.php">Where was in?</a></li>
-                        <li><a href="../whenWasAt/whenWasAt.php" >When was in?</a></li>
-                    </ul>
-                </nav>   
-            </div>
+            <nav>
+                <div class="logo">
+                    <img src="../images/Taxi.png" alt="Taxi logo">
+                </div>
+                <ul>
+                    <?php  include_once "../globalVariables.php"; echo $state; ?>
+                    <li><a href="../index.php" class="seleccion">Main page</a></li>
+                    <li><a href="#">Real Time</a>
+                        <ul>
+                            <li><a href="#" >Location</a></li>
+                            <li><a href="../realTimeRoute/realTimeRoute.php" >Route</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">History</a>
+                        <ul>
+                            <li><a href="../whereWasAt/whereWasAt.php">Where was in?</a></li>
+                            <li><a href="../whenWasAt/whenWasAt.php" >When was in?</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
 
