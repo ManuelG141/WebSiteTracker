@@ -67,7 +67,7 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
     startValue = startUnix;
     endValue = endUnix;
     // Get the actual time
-    const currentTime = Math.floor(new Date().getTime()/1000.0);
+    const currentTime = Math.floor(new Date().getUTCDate()/1000.0);
 
     const {proceed, message} = isRangePossible(startValue, endValue, currentTime);
 
