@@ -4,7 +4,7 @@ function humanToUnix(human){
     // If there's no input, just return null
     if (human!=""){
         const newDate = new Date(human);
-        Epoch = newDate.getTime()/1000.0;
+        Epoch = newDate.getUTCDate()/1000.0;
     }else{
         Epoch = null
     }
