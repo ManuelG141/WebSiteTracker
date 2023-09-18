@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="en">
     <head>     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -11,7 +11,9 @@
             ?>
         </title>
         <link rel="stylesheet" href="../reset.css">
+        <link rel="stylesheet" href="../default.css">
         <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
         <style> @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap'); </style>
     </head>
@@ -32,7 +34,33 @@
             </div>
         </header>
         <main>
-            <p style="padding:100px 500px 500px 500px; font-size: 5em;">Comming Soon!</p>
+            <div class="form">
+                <div class="timeRange">
+                    <label for="startTime">Start time:</label>
+                    <input
+                    type="datetime-local"
+                    id="startTime"
+                    name="startTime"
+                    value="yyyy-mm-ddT00:00"
+                    min="2023-09-03T00:00"
+                    max="2030-06-14T00:00"
+                    />
+                </div>
+                <div class="timeRange">
+                    <label for="endTime">End time:</label>
+
+                    <input
+                    type="datetime-local"
+                    id="endTime"
+                    name="endTime"
+                    value="yyyy-mm-ddT00:00"
+                    min="2023-09-03T00:00"
+                    max="2030-06-14T00:00"
+                    />
+                </div>
+
+                <button class="searchData" onclick="verificate()">Search data!</button>
+            </div>
         </main>
 
         <footer>
@@ -40,4 +68,5 @@
             <p class="copyright">&Tracking my wheels - 2023</p>
         </footer>
     </body>
+    <script src="script.js"></script>
 </html>
