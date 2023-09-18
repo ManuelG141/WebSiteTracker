@@ -42,31 +42,35 @@
         </header>
         <main>
             <div class="form">
-                <div class="timeRange">
-                    <label for="startTime">Start time:</label>
-                    <input
-                    type="datetime-local"
-                    id="startTime"
-                    name="startTime"
-                    value="yyyy-mm-ddT00:00"
-                    min="2023-09-03T00:00"
-                    max="2030-06-14T00:00"
-                    />
-                </div>
-                <div class="timeRange">
-                    <label for="endTime">End time:</label>
+                <form action="../includes/requestHistoryData.php" method="post" id="searchForm"> <!-- Reemplaza "tu_script.php" con el nombre de tu archivo PHP -->
+                    <div class="timeRange">
+                        <label for="startTime">Start time:</label>
+                        <input
+                        type="datetime-local"
+                        id="startTime"
+                        name="startTime" 
+                        value="yyyy-mm-ddT00:00"
+                        min="2023-09-03T00:00"
+                        max="2030-06-14T00:00"
+                        />
+                    </div>
+                    <div class="timeRange">
+                        <label for="endTime">End time:</label>
+                        <input
+                        type="datetime-local"
+                        id="endTime"
+                        name="endTime"
+                        value="yyyy-mm-ddT00:00"
+                        min="2023-09-03T00:00"
+                        max="2030-06-14T00:00"
+                        />
+                    </div>
 
-                    <input
-                    type="datetime-local"
-                    id="endTime"
-                    name="endTime"
-                    value="yyyy-mm-ddT00:00"
-                    min="2023-09-03T00:00"
-                    max="2030-06-14T00:00"
-                    />
-                </div>
-
-                <button class="searchData" onclick="verificate()">Search data!</button>
+                    <button class="searchData" type="submit">Search data!</button> <!-- Cambia el tipo de botón a "submit" -->
+                </form>
+            </div>
+            <div id="result">
+                
             </div>
         </main>
 

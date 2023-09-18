@@ -1,24 +1,3 @@
-/* This func checks all the possible cases so 
-the client don't break the program */
-function verificate(){
-    // Converting from human Readable to unix epoch
-    const startUnix = humanToUnix(startInput.value);
-    const endUnix = humanToUnix(endInput.value);
-    // Storage the values in global variables
-    startValue = startUnix;
-    endValue = endUnix;
-    // Get the actual time
-    const currentTime = Math.floor(new Date().getTime()/1000.0);
-
-    const {proceed, message} = isRangePossible(startValue, endValue, currentTime);
-
-    if(proceed){
-        /* Search data */
-        console.log("Searching Data! start:"+startValue+" end:"+endValue);
-    }else{
-        alert(message);
-    }
-}
 // This func converts from human Readable to unix epoch
 function humanToUnix(human){
     let Epoch;
@@ -66,5 +45,61 @@ const button = document.querySelector(".searchData");
 const startInput = document.querySelector("#startTime");
 const endInput = document.querySelector("#endTime");
 
+
+// Extract latitude, longitude, and timeStamp data
+let latitude = [];
+let longitude = [];
+let timeStamp = [];
+
 let startValue;
 let endValue;
+
+/* This func checks all the possible cases so 
+the client don't break the program */
+
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Converting from human Readable to unix epoch
+    const startUnix = humanToUnix(startInput.value);
+    const endUnix = humanToUnix(endInput.value);
+    // Storage the values in global variables
+    startValue = startUnix;
+    endValue = endUnix;
+    // Get the actual time
+    const currentTime = Math.floor(new Date().getTime()/1000.0);
+
+    const {proceed, message} = isRangePossible(startValue, endValue, currentTime);
+
+    if(proceed){
+        /* Search data */
+        console.log("Searching Data! start:"+startValue+" end:"+endValue);
+        
+        fetch("../includes/requestHistoryData.php", {
+            method: "POST",
+            body: new URLSearchParams({
+                startTime: startValue,
+                endTime: endValue
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the results in the "result" div
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = JSON.stringify(data, null, 2);
+            
+            const id = data.id;
+            const latitude = data.latitude;
+            const longitude = data.longitude;
+            const timeStamp = data.timeStamp;
+
+            console.log("ID Array:", id);
+            console.log("Latitude Array:", latitude);
+            console.log("Longitude Array:", longitude);
+            console.log("TimeStamp Array:", timeStamp);
+        })
+        .catch(error => console.error("Error:", error));
+    }else{
+        alert(message);
+    }
+});
