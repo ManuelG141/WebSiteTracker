@@ -13,7 +13,6 @@ header, footer{
 
 /* START STYLING THE HEADER */
 header{
-    width: 100%;
     padding: 0 60px;
     height: 60px;
     background: url(images/bg.jpg);
@@ -105,7 +104,112 @@ header ul li:hover>ul{
 /* END STYLING THE HEADER */
 
 main{
+    min-width: 100%;
     padding-top: 70px;
+}
+
+.justification{
+    padding: 5px;
+    padding-top: 20px;
+    height: 100px;
+    clear: left;
+}
+
+.justification h1{
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.justification img{
+    padding: 10px;
+    width: 150px;
+    float: left;
+}
+
+.justification p{
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.column{
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.webPages{
+    display: block;
+    padding: 10px;
+    width: 30%;
+}
+
+.webPages ul li h3, .gitHub h3{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.items{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    align-self: center;
+}
+
+.items a{
+    width: 100px;
+    padding: 5px 10px;
+    background-color: orange;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    transition: all ease-in-out 100ms;
+}
+
+.items a:hover{
+    background-color: green;
+    color: white;
+}
+
+.gitHub{
+    width: 70%;
+    padding: 10px;
+}
+
+.gitHubProfiles{
+    height: 70%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+.gitHubProfiles a{
+    width: 25%;
+    text-decoration: none;
+    color: white;
+    transition: all ease-in-out 100ms;
+}
+
+.gitHubProfiles a:hover{
+    transform: scale(1.1);
+}
+
+.gitHubProfile{
+    height: 90%;
+    width: 90%;
+    margin: 2.5%;
+    background-color: #0d1117;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.gitHubProfile img{
+    background: url(https://avatars.githubusercontent.com/u/54610064?v=4);
+    width: 30%;
+    border-radius: 50px;
+    margin: 5px auto;
 }
 
 .banner{
