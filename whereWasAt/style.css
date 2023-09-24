@@ -1,5 +1,5 @@
-.form:first-child{
-    padding-top: 20px;
+.form{
+    padding: 20px;
 }
 
 .timeRange{
@@ -27,7 +27,7 @@
     background: orange;
     border: none;
     border-radius: 5px;
-    transition: 0.2s ;
+    transition: 0.15s ;
     cursor: pointer;
 }
 
@@ -46,5 +46,19 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+#map {
+    visibility: hidden;
+    position: relative;
+    height: 500px;
+    width: 95%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
 #result{
+    visibility: hidden;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto;
+    width: fit-content;
 }

@@ -1,16 +1,28 @@
+// Include the inputs and containers from the HTML file
+const divMap = document.getElementById("map");
+const pResult = document.querySelector("#result");
+const button = document.querySelector(".searchData");
+const startInput = document.querySelector("#startTime");
+const endInput = document.querySelector("#endTime");
+
+// Variables to later store the latitude, longitude, and timeStamp data
+var latitude = [];
+var longitude = [];
+var timeStamp = [];
+
 // This func converts from human Readable to unix epoch
-function humanToUnix(human){
-    let Epoch;
-    // If there's no input, just return null
-    if (human!=""){
-        let newDate = new Date(human);
-        Epoch = (newDate.getTime() - (newDate.getTimezoneOffset() * 60 * 1000))/1000;
-    }else{
-        Epoch = null
-    }
-    return Epoch
+function humanToUTCUnix(human){
+    //If the input is empty, then return null
+    if (human === "") {
+        return null;
+      }
+    //If not then convert to Unix UTC epoch
+    let newDate = new Date(human);
+    let Epoch = newDate.getTime();
+    return Epoch;
 }
-// This func checks if the range is possible
+/* This func checks all the possible cases so 
+the client don't break the program */
 function isRangePossible(start, end, current){
     // By default the program should not proceed until the conditions are checked
     let proceed = false;
@@ -41,68 +53,70 @@ function isRangePossible(start, end, current){
     return {proceed, message};
 }
 
-const button = document.querySelector(".searchData");
-const startInput = document.querySelector("#startTime");
-const endInput = document.querySelector("#endTime");
-
-
-// Extract latitude, longitude, and timeStamp data
-let latitude = [];
-let longitude = [];
-let timeStamp = [];
-
-let startValue;
-let endValue;
-
-/* This func checks all the possible cases so 
-the client don't break the program */
-
+// If someone submit the from, then do what's inside of this
 document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission
 
     // Converting from human Readable to unix epoch
-    const startUnix = humanToUnix(startInput.value);
-    const endUnix = humanToUnix(endInput.value);
-    // Storage the values in global variables
-    startValue = startUnix;
-    endValue = endUnix;
+    const startUnix = humanToUTCUnix(startInput.value);
+    const endUnix = humanToUTCUnix(endInput.value);
     // Get the actual time
-    const currentTime = humanToUnix(new Date().toUTCString());
+    const currentTime = humanToUTCUnix(new Date().getTime());
 
-    console.log(startValue);
-    console.log(endValue);
-    console.log(currentTime);
-    const {proceed, message} = isRangePossible(startValue, endValue, currentTime);
-
+    // Printing info in the nav console
+    console.log("Start value: "+startUnix);
+    console.log("End Value: "+endUnix);
+    console.log("Current Time:"+currentTime);
+    // Checking if the inputs are ok
+    const {proceed, message} = isRangePossible(startUnix, endUnix, currentTime);
+    // If all is ok the proceed
     if(proceed){
         /* Search data */
-        console.log("Searching Data! start:"+startValue+" end:"+endValue);
-        
+        console.log("Searching Data! start:"+startUnix+" end:"+endUnix);
+        // Search the data in data base over the php script, post method
         fetch("../includes/requestHistoryData.php", {
             method: "POST",
             body: new URLSearchParams({
-                startTime: startValue,
-                endTime: endValue
+                startTime: startUnix,
+                endTime: endUnix
             })
         })
         .then(response => response.json())
         .then(data => {
-            // Display the results in the "result" div
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = JSON.stringify(data, null, 2);
-            
-            const id = data.id;
-            const latitude = data.latitude;
-            const longitude = data.longitude;
-            const timeStamp = data.timeStamp;
-
-            console.log("ID Array:", id);
+            // Reset the vectors before saving the data
+            latitude = [];
+            longitude = [];
+            timeStamp = [];
+            // Save the values in latitude, longitude and timeStamp
+            // Vectors
+            data.forEach(item => {
+                latitude.push(item.latitude);
+                longitude.push(item.longitude);
+                timeStamp.push(item.timeStamp);
+            });
+            // Print the vectors in the nav console
             console.log("Latitude Array:", latitude);
             console.log("Longitude Array:", longitude);
             console.log("TimeStamp Array:", timeStamp);
-        })
-        .catch(error => console.error("Error:", error));
+
+            if (latitude.length > 1 && longitude.length > 1){
+                //Hide the result, so there's no need to show it
+                pResult.style.visibility = "hidden";
+                //Make visible the map now that there's data to display
+                divMap.style.visibility = "visible";
+                // Make the polyline in the map
+                makePoly(latitude, longitude);
+            } else {
+                //Show result and hide the map
+                pResult.style.visibility = "visible";
+                pResult.textContent = "There is no result between "+startInput.value+" and "+endInput.value;
+                divMap.style.visibility = "hidden";
+            }
+
+        }).catch(error => console.error("Error:", error));
     }else{
+        /* In the case there's some problem with the inputs of the user
+        then print the message in the screen using a alert*/
         alert(message);
     }
 });
