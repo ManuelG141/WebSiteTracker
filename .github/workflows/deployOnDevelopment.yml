@@ -43,3 +43,4 @@ jobs:
         script: |
           cd /var/www/webSiteTracker/
           git pull origin development
+          sudo systemctl restart apache2

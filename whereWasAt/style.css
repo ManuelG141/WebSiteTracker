@@ -1,0 +1,64 @@
+.form{
+    padding: 20px;
+}
+
+.timeRange{
+    display: inline-block;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.timeRange:first-child{
+    display: block;
+}
+
+.timeRange input{
+    font-size: 20px;
+    padding: 5px;
+}
+
+.searchData{
+    width: 100px;
+    height: 50px;
+    padding: px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: orange;
+    border: none;
+    border-radius: 5px;
+    transition: 0.15s ;
+    cursor: pointer;
+}
+
+/* We took some options from https://dev.to/webdeasy/top-20-css-buttons-animations-f41
+ 8# Rounded pulse Button, Author: Raj Kamal*/
+.searchData:hover{
+    background: green;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.searchData:active{
+    background: purple;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#map {
+    visibility: hidden;
+    position: relative;
+    height: 500px;
+    width: 95%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#result{
+    visibility: hidden;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto;
+    width: fit-content;
+}
