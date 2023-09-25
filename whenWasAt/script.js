@@ -126,12 +126,13 @@ timestampSlider.addEventListener('input', function () {
     console.log(lat);
     console.log(long);
     console.log(ts);
-
+    let date = new Date(ts);
     if (sliderCheck){
         firstTime = false
-        marker = L.marker([lat, long]).addTo(map).bindPopup("Latitude: " + lat + ", Longitude: " + long + ", timeStamp: " + ts);
+        
+        marker = L.marker([lat, long]).addTo(map).bindPopup("Latitude: " + lat + ", Longitude: " + long + ", timeStamp: " + date);
     }else{
-        marker.setLatLng([lat, long]).bindPopup("Latitude: " + lat + ", Longitude: " + long + ", timeStamp: " + ts);
+        marker.setLatLng([lat, long]).bindPopup("Latitude: " + lat + ", Longitude: " + long + ", timeStamp: " + date);
     }
 
     sliderCheck = false;
