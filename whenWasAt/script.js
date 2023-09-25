@@ -91,9 +91,7 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
 
             } else {
                 // Show result and hide the map
-                pResult.style.visibility = "visible";
-                pResult.textContent = "There are no coordinates within the specified range.";
-                divMap.style.visibility = "hidden";
+                alert("There's no result from the given range!");
             }
         })
         .catch(error => console.error("Error:", error));
